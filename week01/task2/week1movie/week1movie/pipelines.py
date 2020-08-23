@@ -10,4 +10,10 @@ from itemadapter import ItemAdapter
 
 class Week1MoviePipeline:
     def process_item(self, item, spider):
+        movieName = item['movieName']
+        movieType = item['movieType']
+        releaseDate = item['releaseDate']
+        output = f'{movieName},{movieType},{releaseDate}\n'
+        with open('./movieTop10.csv','a+',encoding='utf-8') as article:
+            article.write(output)
         return item

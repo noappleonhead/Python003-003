@@ -1,3 +1,5 @@
 {
-    "python.pythonPath": "/Users/rene/.pyenv/versions/3.7.6/bin/python"
+    "python.pythonPath": "/Users/rene/.pyenv/versions/3.7.6/bin/python",
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true
 }

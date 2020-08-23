@@ -1,23 +1,22 @@
 import requests
-import lxml.etree
 from bs4 import BeautifulSoup as bs
 import pandas as pd
 
 # Fetch preparation
-# url = 'https://maoyan.com/films?showType=3'
-# userAgent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36'
+url = 'https://maoyan.com/films?showType=3'
+userAgent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36'
 
 # get cookies
 # session = requests.Session()
 # response = session.get(url)
 # print(session.cookies.get_dict())
 
-# response = requests.get(url, headers={'user-agent': userAgent})
-# response.raise_for_status()
+response = requests.get(url, headers={'user-agent': userAgent})
+response.raise_for_status()
 
 # temp data
-bsInfo = bs(open("resp.html"), 'html.parser')
-# bsInfo = bs(response.text, 'html.parser')
+# bsInfo = bs(open("resp.html"), 'html.parser')
+bsInfo = bs(response.text, 'html.parser')
 
 def getTopMovies(num):
     topMovies = bsInfo.find_all(
@@ -35,8 +34,8 @@ def getTopMovies(num):
                 result['name'] = name.text
                 continue
 
-            # # movie type
-            # # release date
+            # movie type
+            # release date
             isHoverTag = info.find('span', class_='hover-tag')
             if isHoverTag is not None:
                 spanContent = isHoverTag.text

@@ -7,6 +7,6 @@ import scrapy
 
 
 class Week1MovieItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    movieName = scrapy.Field()
+    movieType = scrapy.Field()
+    releaseDate = scrapy.Field()
